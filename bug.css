@@ -1,0 +1,22 @@
+The following CSS rule is trying to target elements with a class of "error" that are descendants of an element with a class of "form-group", but it does not correctly handle cases where multiple elements with the class "error" are nested within the same "form-group" element.
+
+```css
+.form-group .error {
+  border-color: red;
+}
+```
+
+If you have this HTML structure:
+
+```html
+<div class="form-group">
+  <input type="text" class="error">
+  <div class="error">
+    <span>Error message</span>
+  </div>
+</div>
+```
+
+The CSS rule will apply the red border to both the input and the inner div. However, it is possible that this is not the intended behavior. The inner div might not need a red border, and in fact, applying a border to it could add undesirable visual effects.
+
+This can be an uncommon bug because it usually doesn't cause an immediate error and only results in unexpected visual issues, making it harder to detect.
