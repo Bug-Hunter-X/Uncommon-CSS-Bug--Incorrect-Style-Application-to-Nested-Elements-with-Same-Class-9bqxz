@@ -1,0 +1,38 @@
+To fix this issue, we need to use more specific CSS selectors to target only the intended elements. We can use a child combinator (>) or adjust our class names for better specificity.
+
+Here are two solutions:
+
+**Solution 1: Using the child combinator**
+
+This solution uses the `>` combinator to target only the direct children of `.form-group` with the class `error`.
+
+```css
+.form-group > .error {
+  border-color: red;
+}
+```
+
+This will only apply the red border to the input element and not the inner div.
+
+**Solution 2: Adjusting class names**
+
+This solution involves adding more specific class names to each element.  This approach provides better separation and avoids conflicts.
+
+```html
+<div class="form-group">
+  <input type="text" class="form-group-error">
+  <div class="error-message">
+    <span>Error message</span>
+  </div>
+</div>
+```
+
+```css
+.form-group .form-group-error {
+  border-color: red;
+}
+```
+
+This applies the red border only to the input element with the specific class `form-group-error`.
+
+Choosing the best solution depends on the overall structure of your HTML and CSS.  The child combinator is a good choice for minor adjustments, whereas renaming classes provides a cleaner and more maintainable solution for larger projects.
